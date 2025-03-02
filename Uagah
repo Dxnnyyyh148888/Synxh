@@ -160,7 +160,7 @@ end)
 local bot = Instance.new("TextButton")
 bot.Parent = m
 bot.Size = UDim2.new(0.4, 0, 0.1, 0)
-bot.Position = UDim2.new(0.05, 0, 0.8, 0)
+bot.Position = UDim2.new(0.05, 0, 0.55, 0)
 bot.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
 bot.BorderColor3 = Color3.new(0.5, 0.5, 0.5)
 bot.Text = "Aim-Bot"

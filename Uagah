@@ -156,18 +156,21 @@ close.TextColor3 = Color3.new(1,1,1)
 close.MouseButton1Click:Connect(function()
 k: Destroy()
 end)
-local bot = Instance.new(("TextButton")
+-- aimbot
+local bot = Instance.new("TextButton")
 bot.Parent = m
-bot.Size = UDim2.new(0.4,0,0.1)
-bot.Position = UDim2.new(0.05,0,0.8)
-bot.BackgroundColor3 = Color3.fromRGB(54,54,54)
-bot.BorderColor3 = Color3.new(0.5,0.5,0.5)
+bot.Size = UDim2.new(0.4, 0, 0.1, 0)
+bot.Position = UDim2.new(0.05, 0, 0.8, 0)
+bot.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+bot.BorderColor3 = Color3.new(0.5, 0.5, 0.5)
 bot.Text = "Aim-Bot"
 bot.Font = Enum.Font.SourceSans
-bot.TextColor3 = Color3.new(1,1,1)
+bot.TextColor3 = Color3.new(1, 1, 1)
+bot.TextScaled = true
+bot.AutoButtonColor = true
 bot.MouseButton1Click:Connect(function()
-bot.Text = "loading.."
-loadstring(game:HttpGet("https://pastebin.com/raw/DArrXGCn"))()
-wait(1)
-bot.Text = "Aimbot"
+    bot.Text = "Loading..."
+    loadstring(game:HttpGet("https://pastebin.com/raw/DArrXGCn"))()
+    wait(1)
+    bot.Text = "Aim-Bot"
 end)

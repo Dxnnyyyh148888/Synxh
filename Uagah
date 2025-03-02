@@ -1,0 +1,158 @@
+local k = Instance.new("ScreenGui")
+k.Parent = game.Players.LocalPlayer.PlayerGui
+
+local m = Instance.new("Frame")
+m.Parent = k
+m.Size = UDim2.new(0.2, 0, 0.5)
+m.Position = UDim2.new(0.7, 0, 0.25)
+m.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+m.BorderSizePixel = 0
+m.Active = true
+m.Draggable = true
+
+local j = Instance.new("TextLabel")
+j.Parent = m
+j.Size = UDim2.new(1, 0, 0.07)
+j.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+j.BorderSizePixel = 0
+j.Text = "Synapse X - Hack Menu"
+j.TextScaled = true
+j.Font = Enum.Font.SourceSans
+j.TextColor3 = Color3.new(1, 1, 1)
+-- speed
+local Speed = Instance.new("TextButton")
+Speed.Parent = m
+Speed.Size = UDim2.new(0.9, 0, 0.1, 0)
+Speed.Position = UDim2.new(0.05, 0, 0.1, 0)
+Speed.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+Speed.TextColor3 = Color3.new(1, 1, 1)
+Speed.Font = Enum.Font.SourceSans
+Speed.Text = " Click to Speed"
+Speed.BorderSizePixel = 1
+Speed.BorderColor3 = Color3.new(0.5, 0.5, 0.5)
+Speed.TextScaled = true
+Speed.TextXAlignment = Enum.TextXAlignment.Left
+
+local Player = game.Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local Humanoid = Character:WaitForChild("Humanoid")
+
+local SpeedBox = Instance.new("TextBox")
+SpeedBox.Parent = Speed
+SpeedBox.Size = UDim2.new(0.3, 0, 0.8)
+SpeedBox.Position = UDim2.new(0.65, 0, 0.1)
+SpeedBox.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+SpeedBox.TextColor3 = Color3.new(1, 1, 1)
+SpeedBox.PlaceholderText = "set"
+SpeedBox.Text = "16"
+SpeedBox.TextScaled = true
+SpeedBox.BorderSizePixel = 0
+SpeedBox.Font = Enum.Font.SourceSans
+
+Speed.MouseButton1Click:Connect(function()
+    local newSpeed = tonumber(SpeedBox.Text)
+    if newSpeed and newSpeed > 0 then
+        Humanoid.WalkSpeed = newSpeed
+    else
+        SpeedBox.Text = tostring(Humanoid.WalkSpeed)
+    end
+end)
+
+-- Infinite Jump
+local InfiniteJump = Instance.new("TextButton")
+InfiniteJump.Parent = m
+InfiniteJump.Size = UDim2.new(0.4, 0, 0.1, 0)
+InfiniteJump.Position = UDim2.new(0.05, 0, 0.25, 0)
+InfiniteJump.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+InfiniteJump.TextColor3 = Color3.new(1, 1, 1)
+InfiniteJump.Font = Enum.Font.SourceSans
+InfiniteJump.Text = "Inf Jump"
+InfiniteJump.BorderSizePixel = 1
+InfiniteJump.BorderColor3 = Color3.new(0.5, 0.5, 0.5)
+InfiniteJump.TextScaled = true
+
+local InfiniteJumpEnabled = false
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    if InfiniteJumpEnabled then
+        Humanoid:ChangeState("Jumping")
+    end
+end)
+
+InfiniteJump.MouseButton1Click:Connect(function()
+    InfiniteJumpEnabled = not InfiniteJumpEnabled
+end)
+
+-- Fullbright
+local Fullbright = Instance.new("TextButton")
+Fullbright.Parent = m
+Fullbright.Size = UDim2.new(0.4, 0, 0.1, 0)
+Fullbright.Position = UDim2.new(0.55, 0, 0.25, 0)
+Fullbright.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+Fullbright.TextColor3 = Color3.new(1, 1, 1)
+Fullbright.Font = Enum.Font.SourceSans
+Fullbright.Text = "Fullbright"
+Fullbright.BorderSizePixel = 1
+Fullbright.BorderColor3 = Color3.new(0.5, 0.5, 0.5)
+Fullbright.TextScaled = true
+
+local FullbrightEnabled = false
+local Lighting = game:GetService("Lighting")
+
+Fullbright.MouseButton1Click:Connect(function()
+    FullbrightEnabled = not FullbrightEnabled
+    if FullbrightEnabled then
+        Lighting.Ambient = Color3.new(1, 1, 1)
+        Lighting.OutdoorAmbient = Color3.new(1, 1, 1)
+    else
+        Lighting.Ambient = Color3.new(0.5, 0.5, 0.5)
+        Lighting.OutdoorAmbient = Color3.new(0.5, 0.5, 0.5)
+    end
+end)
+-- esp
+local esp = Instance.new("TextButton")
+esp.Parent = m
+esp.Size = UDim2.new(0.4,0,0.1)
+esp.Position = UDim2.new(0.05,0,0.4)
+esp.BackgroundColor3 = Color3.fromRGB(54,54,54)
+esp.BorderColor3 = Color3.new(0.5,0.5,0.5)
+esp.Text = "Esp"
+esp.TextScaled = true
+esp.TextColor3 = Color3.new(1,1,1)
+esp.Font = Enum.Font.SourceSans
+esp.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastebin.com/raw/e2PaYx5i"))()
+esp.Text = "loading.."
+wait(1)
+esp.Text = "Esp"
+end)
+-- fly
+local fly = Instance.new("TextButton")
+fly.Parent = m
+fly.Size = UDim2.new(0.4,0,0.1)
+fly.Position = UDim2.new(0.55,0,0.4)
+fly.BackgroundColor3 = Color3.fromRGB(54,54,54)
+fly.BorderColor3 = Color3.new(0.5,0.5,0.5)
+fly.Text = "Fly Gui"
+fly.TextScaled = true
+fly.Font = Enum.Font.SourceSans
+fly.TextColor3 = Color3.new(1,1,1)
+fly.MouseButton1Click:Connect(function()
+fly.Text = "loading.."
+loadstring(game:HttpGet("https://pastebin.com/raw/D3nJwqb8"))()
+wait(1)
+fly.Text = "Fly Gui"
+end)
+-- close
+local close = Instance.new("TextButton")
+close.Parent = m
+close.Size = UDim2.new(0.3,0,0.1)
+close.Position = UDim2.new(0.65,0,0.85)
+close.BackgroundColor3 = Color3.fromRGB(54,54,54)
+close.Text = "Close"
+close.BorderSizePixel = 0
+close.TextScaled = true
+close.Font = Enum.Font.SourceSans
+close.TextColor3 = Color3.new(1,1,1)
+close.MouseButton1Click:Connect(function()
+k: Destroy()
+end)
